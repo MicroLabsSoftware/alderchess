@@ -796,12 +796,15 @@ AlderChess::XY AlderChess::GameRenderer::GetMouseSquare(XY Coordinates) {
 }
 
 void AlderChess::GameRenderer::ShowInformationDialog() {
-	std::string InformationText = "Alder Chess\n\n"s +
-	                              "Version "s + std::to_string(Version) + "\n"s +
-	                              "Running on "s + SDL_GetPlatform() + "\n\n"s +
-	                              "(C) MicroLabs\n"s +
-	                              "(C) Joonas Saarinen\n\n"s +
-	                              "Web: microlabs.fi"s;
+	std::string InformationText =
+		"Alder Chess\n\n"s +
+		"Version "s + std::to_string(Version) + "\n"s +
+		"Running on "s + SDL_GetPlatform() + "\n\n"s +
+		"(C) MicroLabs\n"s +
+		"(C) Joonas Saarinen\n\n"s +
+		"This program is licensed under GNU General Public License (version 3).\n"s +
+		"Please see the included file gpl-3.0.txt for more details.\n\n"s +
+		"Web: microlabs.fi"s;
 
 	SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,
                              "About Alder Chess",
