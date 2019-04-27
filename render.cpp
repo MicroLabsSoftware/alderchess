@@ -157,6 +157,7 @@ bool AlderChess::GameRenderer::LoadResources() {
 	                                  "i_restart.bmp",
 	                                  "i_load.bmp",
 	                                  "i_save.bmp",
+	                                  "i_information.bmp",
 	                                  "i_quit.bmp"
 	};
 	
@@ -224,6 +225,7 @@ void AlderChess::GameRenderer::Render() {
 	              IconTypeToolbar::Restart,
 	              IconTypeToolbar::Load,
 	              IconTypeToolbar::Save,
+	              IconTypeToolbar::Information,
 	              IconTypeToolbar::Quit}) {
 
 		XY IconPosition = GetToolbarIconPosition(i);
@@ -572,6 +574,10 @@ void AlderChess::GameRenderer::HandleMouseClick(XY Coordinates) {
 
 				break;
 
+			case IconTypeToolbar::Information:
+				ShowInformationDialog();
+				break;
+
 			case IconTypeToolbar::Quit:
 				QuitApplication = true;
 				break;
@@ -637,7 +643,7 @@ void AlderChess::GameRenderer::HandleMouseHover(XY Coordinates) {
 
 	int MouseOverIcon = 0;
 
-	for (int i = 0; i < 6; i++) {
+	for (int i = 0; i < 7; i++) {
 		UI.Icon.HoverState.Toolbar[i] = false;
 	}
 
@@ -679,6 +685,9 @@ void AlderChess::GameRenderer::HandleMouseHover(XY Coordinates) {
 				case IconTypeToolbar::Save:
 					UI.Label.Hover = LabelType::Save;
 					break;
+				case IconTypeToolbar::Information:
+					UI.Label.Hover = LabelType::Information;
+					break;
 				case IconTypeToolbar::Quit:
 					UI.Label.Hover = LabelType::Quit;
 					break;
@@ -715,7 +724,7 @@ int AlderChess::GameRenderer::GetMouseIconToolbar(XY Coordinates) {
 		                         Test.y + UI.Scale * UI.Metric.Icon})) {
 			return Icon;
 		}
-	} while(++Icon < 7);
+	} while(++Icon < 8);
 
 	return IconTypeToolbar::NoIcon;
 }
@@ -784,6 +793,22 @@ AlderChess::XY AlderChess::GameRenderer::GetMouseSquare(XY Coordinates) {
 	}
 
 	return Result;
+}
+
+void AlderChess::GameRenderer::ShowInformationDialog() {
+	std::string InformationText = "Alder Chess\n\n"s +
+	                              "Version "s + std::to_string(Version) + "\n"s +
+	                              "Running on "s + SDL_GetPlatform() + "\n\n"s +
+	                              "(C) MicroLabs\n"s +
+	                              "(C) Joonas Saarinen\n\n"s +
+	                              "Web: microlabs.fi"s;
+
+	SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_INFORMATION,
+                             "About Alder Chess",
+                             InformationText.c_str(),
+                             SDL.Window);
+
+	return;
 }
 
 void AlderChess::GameRenderer::SwitchUILanguage() {
@@ -878,6 +903,7 @@ AlderChess::XY AlderChess::GameRenderer::GetToolbarIconPosition(int Icon) {
 		case IconTypeToolbar::Restart: FromRight++;
 		case IconTypeToolbar::Load: FromRight++;
 		case IconTypeToolbar::Save: FromRight++;
+		case IconTypeToolbar::Information: FromRight++;
 		case IconTypeToolbar::Quit:
 			Result.x = UI.WindowSize.x -
 				       UI.Scale * UI.Metric.WhiteSpace -

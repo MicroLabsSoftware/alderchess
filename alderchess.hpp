@@ -43,6 +43,7 @@ namespace AlderChess {
 	                 Restart,
 	                 Load,
 	                 Save,
+	                 Information,
 	                 Quit,
 	                 Promotion,
 	                 TurnBlack,
@@ -176,6 +177,7 @@ namespace AlderChess {
 			                       Restart,
 			                       Load,
 			                       Save,
+			                       Information,
 			                       Quit };
 
 			enum IconTypePromotion { PromotionNo,
@@ -231,7 +233,7 @@ namespace AlderChess {
 
 				struct {
 					struct {
-						bool Toolbar[6] = { false };
+						bool Toolbar[7] = { false };
 						bool Promotion[4] = { false };
 					} HoverState;
 
@@ -259,6 +261,7 @@ namespace AlderChess {
 
 			void SetErrorMessage(std::string Message);
 			bool LoadResources();
+			void ShowInformationDialog();
 			void SwitchUILanguage();
 			void UpdateTurnLabel();
 			void AfterTurnTasks();

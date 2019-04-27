@@ -75,6 +75,7 @@ AlderChess::GameText::GameText(std::pair<std::string, int> FaceWestern,
 	                   LabelType::Restart,
 	                   LabelType::Load,
 	                   LabelType::Save,
+		               LabelType::Information,
 	                   LabelType::Quit,
 	                   LabelType::Promotion,
 	                   LabelType::TurnBlack,
@@ -213,6 +214,7 @@ std::wstring AlderChess::GameText::GetText(int Language, int LabelID) {
 				case LabelType::Restart: return L"Restart";
 				case LabelType::Load: return L"Load";
 				case LabelType::Save: return L"Save";
+				case LabelType::Information: return L"About game";
 				case LabelType::Quit: return L"Quit";
 				case LabelType::Promotion: return L"Promotion";
 				case LabelType::TurnBlack: return L"Black's turn.";
@@ -235,6 +237,7 @@ std::wstring AlderChess::GameText::GetText(int Language, int LabelID) {
 				case LabelType::Restart: return L"\uC0C8\uB85C\uC2DC\uC791";
 				case LabelType::Load: return L"\uBD88\uB7EC\uC624\uAE30";
 				case LabelType::Save: return L"\uC800\uC7A5\uD558\uAE30";
+				case LabelType::Information: return L"\uAC8C\uC784\uC5D0 \uB300\uD574\uC11C";
 				case LabelType::Quit: return L"\uAC8C\uC784 \uB05D";
 				case LabelType::Promotion: return L"\uD504\uB85C\uBAA8\uC158";
 				case LabelType::TurnBlack: return L"\uD751\uC0C9\uC758 \uCC28\uB808\uC785\uB2C8\uB2E4.";
@@ -257,6 +260,7 @@ std::wstring AlderChess::GameText::GetText(int Language, int LabelID) {
 				case LabelType::Restart: return L"Aloita alusta";
 				case LabelType::Load: return L"Lataa peli";
 				case LabelType::Save: return L"Tallenna peli";
+				case LabelType::Information: return L"Tietoa pelist\u00E4";
 				case LabelType::Quit: return L"Poistu";
 				case LabelType::Promotion: return L"Promootio";
 				case LabelType::TurnBlack: return L"Mustan vuoro.";
