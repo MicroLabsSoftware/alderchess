@@ -91,6 +91,7 @@
   <ItemGroup>
     <ClInclude Include="alderchess.hpp" />
     <ClInclude Include="matrix.hpp" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.hpp" />
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +108,12 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="alderchess.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\appicon-multisize.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -69,6 +69,8 @@ AlderChess::GameRenderer::GameRenderer() {
 
 	if (!LoadResources()) return;
 
+	if (!PrepareApplicationIcon()) return;
+
 	SetErrorMessage("The font backend failed to initialize properly.");
 
 	XY LabelSize = { UI.WindowSize.x - 2 * UI.Scale * UI.Metric.WhiteSpace,
@@ -203,6 +205,19 @@ bool AlderChess::GameRenderer::LoadResources() {
 		SDL.Texture.WhitePiece.push_back(SDL_CreateTextureFromSurface(SDL.Renderer, BitmapSurface));
 		SDL_FreeSurface(BitmapSurface);
 	}
+
+	return true;
+}
+
+bool AlderChess::GameRenderer::PrepareApplicationIcon() {
+	SDL_Surface *BitmapSurface = NULL;
+
+	BitmapSurface = SDL_LoadBMP("appicon-16x16.bmp");
+	if (BitmapSurface == NULL) return false;
+
+	SDL_SetWindowIcon(SDL.Window, BitmapSurface);
+
+	SDL_FreeSurface(BitmapSurface);
 
 	return true;
 }

@@ -261,6 +261,7 @@ namespace AlderChess {
 
 			void SetErrorMessage(std::string Message);
 			bool LoadResources();
+			bool PrepareApplicationIcon();
 			void ShowInformationDialog();
 			void SwitchUILanguage();
 			void UpdateTurnLabel();
