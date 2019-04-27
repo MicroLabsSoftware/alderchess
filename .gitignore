@@ -1,4 +1,4 @@
 .vs/
 x64/
-setup/Release
-setup/Debug
+setup/Release/
+setup/Debug/
